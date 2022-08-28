@@ -39,4 +39,4 @@ npm i handlebars-helpers
 nodemon app.js
 ```
 
-點擊http://localhost:3000執行
+[點擊http://localhost:3000執行](http://localhost:3000)
