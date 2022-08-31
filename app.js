@@ -1,26 +1,24 @@
-// require packages used in the project
 const express = require('express')
 const app = express()
 const port = 3000
 
-// require handlebars in the project
+// 插入 handlebars 及 express-handlebars
 const exphbs =  require('express-handlebars')
 const hbshelpers = require('handlebars-helpers')
 const multihelpers = hbshelpers()
 const restaurantList = require('./restaurant.json')
 
-// routes setting
-app.engine('handlebars', exphbs({ helpers: multihelpers, defaultLayout: 'main', }))
+// 路徑設定
+app.engine('handlebars', exphbs({ helpers: multihelpers, defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
 app.use(express.static(__dirname + '/public'))
 
-// routes setting
+// 首頁
 app.get('/', (req, res) => {
-  // past the movie data into 'index' partial template
   res.render('index', { restaurants: restaurantList.results })
 })
 
-// search fot name, category
+// 搜尋名稱及類別
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
   const restaurants = restaurantList.results.filter(restaurant => {
@@ -28,16 +26,16 @@ app.get('/search', (req, res) => {
   })
 
   const resultcount = restaurants.length
-  res.render('index', { restaurants: restaurants, keyword: keyword, resultcount: resultcount })
+  res.render('index', { restaurants , keyword , resultcount })
 })
 
-// render show page
+// 餐廳詳細頁
 app.get('/restaurants/:restaurant_id', (req, res) => {
   const restaurant = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.restaurant_id)
-  res.render('show', { restaurant: restaurant })
+  res.render('show', { restaurant })
 })
 
-// start and listen on the Express server
+// 監聽express
 app.listen(port, () => {
   console.log(`Express is listening on localhost:${port}`)
 })

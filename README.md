@@ -13,30 +13,15 @@
 
 ## 環境建置
 
-1. 初始化 npm 套件
+1. 安裝 npm 套件
 
 ```
-npm init -y
+npm install
 ```
 
-2. 安裝 express 套件
-```
-npm install express@4.16.4
-```
-
-3. 安裝樣版引擎
-```
-npm install express-handlebars@3.0.0
-```
-
-4. 安裝 handlebars-helpers
-```
-npm i handlebars-helpers
-```
-
-5. 執行app.js
+2. 執行app.js
 ```
 nodemon app.js
 ```
 
-[點擊http://localhost:3000執行](http://localhost:3000)
+點擊 `http://localhost:3000` 執行
